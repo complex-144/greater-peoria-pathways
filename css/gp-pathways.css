@@ -1,0 +1,181 @@
+/*  ››››››››››››››››››››››››››››››››››››››››
+    ››››››››››››››››››››››››››››››››››››››››  GREATER PEORIA PATHWAY PLUGIN  ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹  ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹  */
+
+#gp-pathway {
+    margin-bottom: 20px;
+}
+
+#gp-pathway > div:nth-of-type(1) {
+	/*background-color:#1c517d;
+	color:#ffffff;*/
+	-moz-border-radius:5px 5px 0 0;
+	-webkit-border-radius:5px 5px 0 0;
+	border-radius:5px 5px 0 0;
+	font-size:1.15em;
+	padding:10px 25px 10px 25px;
+	text-align:center;
+}
+#gp-pathway > div#dunlap {
+	background-color:#650b05;
+	color:#ffffff;
+}
+#gp-pathway > div#elmwood {
+	background-color:#ef642d;
+	color:#ffffff;
+}
+#gp-pathway > div#eastpeoria {
+	background-color:#fdd73e;
+	color:#7f112f;
+}
+#gp-pathway > div#pekin {
+	background-color:#9f2b36;
+	color:#ffffff;
+}
+
+#gp-pathway > div:nth-of-type(2) {
+	background-color:#428bca;
+	color:#ffffff;
+	font-size:0.75em;
+	margin:0 0 40px 0;
+	padding:5px 25px 5px 25px;
+	text-align:center;
+}
+
+
+#gp-pathway #high-school {
+	display:table;
+	font-size:16px;
+	width:100%;
+}
+
+#gp-pathway #early-college-credit {
+	margin:40px 0 0 0;
+}
+
+#gp-pathway > div > section {
+	display:table-row;
+	font-size:0.75em;
+}
+#gp-pathway #high-school > section:hover {
+	background-color:#fafae1;
+	cursor:default;
+}
+
+#gp-pathway > div > section > div {
+	display:table-cell;
+	position:relative;
+	width:16.667%;
+}
+#gp-pathway #early-college-credit > section > div:nth-of-type(2),
+#gp-pathway #professional-learning > section > div:nth-of-type(2),
+#gp-pathway #industry-credentials > section > div:nth-of-type(2) {
+	width:83.334%;
+}
+#gp-pathway #icc-programs > section > div:nth-of-type(n+2) {
+	width:41.667%;
+}
+/*#gp-pathway #activities > section > div:nth-of-type(n+2),
+#gp-pathway #majors > section > div:nth-of-type(n+2) {
+	width:83.334%;
+}
+#gp-pathway #careers > section > div:nth-of-type(n+2) {
+	width:41.667%;
+}*/
+#gp-pathway #high-school > section:first-of-type > div {
+	border-bottom:1px solid #3672a5;
+	border-right:1px solid #3672a5;
+}
+#gp-pathway #high-school > section:not(:first-of-type) > div,
+#gp-pathway > div > section > div {
+	border-bottom:1px dashed rgba(0,0,0,0.25);
+	border-right:1px solid rgba(0,0,0,0.25);
+}
+#gp-pathway #high-school > section:last-of-type > div {
+	border-bottom-style:solid;
+}
+
+
+/*  ››››››››››››››››››››››››››››››››››››››››
+    ›››››››››››››››››››››››››››››››››››››››› COLUMN HEADER and ROW HEADER  */
+
+#gp-pathway #high-school > section:first-of-type > div,
+#gp-pathway #high-school > section > div:first-of-type,
+#gp-pathway > div > section > div:first-of-type,
+#gp-pathway > div > section > div > div {
+	color:#f9f9f9;
+	font-size:1.167em;
+	height:50px;
+	text-align:center;
+}
+#gp-pathway #high-school > section:first-of-type > div,
+#gp-pathway #high-school > section > div:first-of-type {
+	vertical-align:middle;
+}
+#gp-pathway #high-school > section:first-of-type > div,
+#gp-pathway > div > section > div > div {
+	background-color:#428bca;
+	font-weight:300;
+}
+#gp-pathway #high-school > section:not(:first-of-type) > div:first-of-type,
+#gp-pathway > div > section > div:first-of-type {
+	background-color:#1c517d;
+	font-size:1.5em;
+	height:100px;
+	line-height:1;
+}
+#gp-pathway #high-school > section:not(:first-of-type) > div:first-of-type {
+	text-transform:uppercase;
+}
+#gp-pathway #high-school > section:nth-of-type(n+2):hover > div:first-of-type {
+	background-color:#3672a5;
+}
+#gp-pathway > div > section > div > div {
+	padding:15px 0 0 0;
+}
+
+#gp-pathway #high-school > section:not(:first-of-type) > div:first-of-type strong {
+	display:block;
+	font-size:2.167em;
+	text-transform:none;
+}
+
+#gp-pathway #high-school > section:not(:first-of-type) > div:first-of-type sup {
+	font-size:0.5em;
+}
+
+
+/*  ››››››››››››››››››››››››››››››››››››››››
+    ›››››››››››››››››››››››››››››››››››››››› DATA FIELDS  */
+
+#gp-pathway > div {
+	display:table;
+	font-size:16px;
+	width:100%;
+}
+
+#gp-pathway > div > section > div > p {
+	margin-left:4px;
+	margin-right:4px;
+}
+
+#gp-pathway > div > section > div > ul {
+	list-style:none;
+	margin:4px 4px 4px 4px;
+	padding:0 0 0 0;
+}
+
+#gp-pathway > div > section > div > ul li {
+	border-bottom:1px solid rgba(0,0,0,0.05);
+	padding:3px 5px 3px 5px;
+}
+#gp-pathway > div > section > div > ul li:hover {
+	background-color:#fafae1;
+	cursor:default;
+}
+#gp-pathway #high-school > section > div > ul li:hover {
+	background-color:rgba(255,255,255,0.9);
+}
+
+#gp-pathway > div > section > div > ul li strong {
+	float:right;
+}
