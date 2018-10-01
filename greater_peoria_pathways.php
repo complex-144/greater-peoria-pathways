@@ -2,7 +2,7 @@
 /*
    Plugin Name: Greater Peoria Pathways
    Description: Greater Peoria EDC highschool pathways plugin.
-   Version: 1.0.1
+   Version: 1.3.1
    Author: ICC Web Services
    Author URI: icc.edu
    License: GPL2
@@ -1130,22 +1130,22 @@ function gp_pathway_save( $post_id ){
         
         if (isset($_REQUEST['icc_certificate_title_'])){
             
-            foreach ($_REQUEST['icc_certificate_title_'] as $key => $icccertificateTitle) {$icccertificateTitle = strip_tags($icccertificateTitle);if(!empty($icccertificateTitle)){update_post_meta( $post_id, 'icc_certificate_title_['.$key.']', $icccertificateTitle);}}
+            foreach ($_REQUEST['icc_certificate_title_'] as $key => $icccertificateTitle) {$icccertificateTitle = strip_tags($icccertificateTitle); update_post_meta( $post_id, 'icc_certificate_title_['.$key.']', $icccertificateTitle);}
         }
         
         if (isset($_REQUEST['icc_certificate_url_'])){
             
-            foreach ($_REQUEST['icc_certificate_url_'] as $key => $icccertificateUrl) {$icccertificateUrl = strip_tags(preg_replace('#^https?://#', '', $icccertificateUrl));if(!empty($icccertificateUrl)){update_post_meta( $post_id, 'icc_certificate_url_['.$key.']', $icccertificateUrl);}}
+            foreach ($_REQUEST['icc_certificate_url_'] as $key => $icccertificateUrl) {$icccertificateUrl = strip_tags(preg_replace('#^https?://#', '', $icccertificateUrl)); update_post_meta( $post_id, 'icc_certificate_url_['.$key.']', $icccertificateUrl);}
         }
         
         if (isset($_REQUEST['icc_program_title_'])){
             
-            foreach ($_REQUEST['icc_program_title_'] as $key => $iccprogramTitle) {$iccprogramTitle = strip_tags($iccprogramTitle);if(!empty($iccprogramTitle)){update_post_meta( $post_id, 'icc_program_title_['.$key.']', $iccprogramTitle);}}
+            foreach ($_REQUEST['icc_program_title_'] as $key => $iccprogramTitle) {$iccprogramTitle = strip_tags($iccprogramTitle);update_post_meta( $post_id, 'icc_program_title_['.$key.']', $iccprogramTitle);}
         }
         
         if (isset($_REQUEST['icc_program_url_'])){
             
-            foreach ($_REQUEST['icc_program_url_'] as $key => $iccprogramUrl) {$iccprogramUrl = strip_tags(preg_replace('#^https?://#', '', $iccprogramUrl));if(!empty($iccprogramUrl)){update_post_meta( $post_id, 'icc_program_url_['.$key.']', $iccprogramUrl);}}
+            foreach ($_REQUEST['icc_program_url_'] as $key => $iccprogramUrl) {$iccprogramUrl = strip_tags(preg_replace('#^https?://#', '', $iccprogramUrl)); update_post_meta( $post_id, 'icc_program_url_['.$key.']', $iccprogramUrl);}
         }
             
  } // End if post_type == gp_pathway
@@ -1193,6 +1193,7 @@ function ajax_action($post_id){
 */
 add_shortcode( 'gp-pathway', 'display_gp_pathways' ); // [gp-pathway id="4201"] id=Post ID
 function display_gp_pathways($atts) {
+    ob_start();
     
     global $wpdb; // global wordpress database class
     
@@ -1228,11 +1229,11 @@ function display_gp_pathways($atts) {
 
 <div id="gp-pathway">
 
-<div id="<?php echo str_replace(' ', '', strtolower($school[0]->name)); ?>">
-
+<div <?php if(!empty($school[0]->name)) echo "id=".str_replace(' ', '', strtolower($school[0]->name)); ?>>
 <?php 
     $clustercats = '';
     $pathwaycats = '';
+    if(!empty($clus_paths)){
         foreach($clus_paths as $term) { // add categories that are parent categories
             if ($term->parent == 0) { 
                 $clustercats .= $term->name.'; ';
@@ -1241,9 +1242,10 @@ function display_gp_pathways($atts) {
                 $pathwaycats .= ' '.$term->name.', '; // add categories that aren't parent categories
             } 
         }
-        echo $clustercats.' '.rtrim($pathwaycats, ', '); // echo cluster and pathway remove last comma from pathway
+if(!empty($clustercats) || !empty($pathwaycats)){echo $clustercats.' '.rtrim($pathwaycats, ', ').' - ';} // echo cluster and pathway remove last comma from pathway
+    }
     ?>
-    - <?php echo get_the_title($post).' ('.$school[0]->name.')'; // post title and school name?>
+<?php echo get_the_title($post); if(isset($school[0]->name)){echo '('.$school[0]->name.')';} // post title and school name?>
 </div>
    
     <div><?php echo $meta['pathway_description'][0];?></div>
@@ -1519,4 +1521,5 @@ function display_gp_pathways($atts) {
 <?php 
          }// End pathways foreach
     }// End if $id empty
+    return ob_get_clean();
 }// End of Function display_gp_pathways
